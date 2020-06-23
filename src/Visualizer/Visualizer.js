@@ -76,44 +76,40 @@ export default class Visualizer extends React.Component {
 
   render () {
     return <div className="visualizer">
-      <header className="visualizer-header">
-        <img className="visualizer-header__favicon" src="" alt="" />
-        <h1 className="visualizer-header__title">Testez les algorithmes de tri</h1>
-        <nav className="visualizer-navigation">
-          <div className="left">
-            <button
-              className="visualizer-navigation__random"
-              type="button"
-              onClick={this.handleRandom}
-            ><i class="fas fa-random"></i></button>
-            <input
-              className="visualizer-navigation__count"
-              type="range"
-              min="10"
-              max="100"
-              value={this.state.itemsCount}
-              onChange={this.handleRange}
-            />
-          </div>
-          <div className="right">
-            <button
-              className="visualizer-navigation__sorter"
-              type="button"
-              onClick={this.handleSort}
-            >Tri par sélection</button>
-            <button
-              className="visualizer-navigation__sorter"
-              type="button"
-              onClick={this.handleSort}
-            >Tri par insertion</button>
-            <button
-              className="visualizer-navigation__sorter"
-              type="button"
-              onClick={this.handleSort}
-            >Tri à bulle</button>
-          </div>
-        </nav>
-      </header>
+      <nav className="visualizer-navigation">
+        <div className="left">
+          <button
+            className="visualizer-navigation__random"
+            type="button"
+            onClick={this.handleRandom}
+          ><i class="fas fa-random"></i></button>
+          <input
+            className="visualizer-navigation__count"
+            type="range"
+            min="10"
+            max="100"
+            value={this.state.itemsCount}
+            onChange={this.handleRange}
+          />
+        </div>
+        <div className="right">
+          <button
+            className="visualizer-navigation__sorter"
+            type="button"
+            onClick={this.handleSort}
+          >Tri par sélection</button>
+          <button
+            className="visualizer-navigation__sorter"
+            type="button"
+            onClick={this.handleSort}
+          >Tri par insertion</button>
+          <button
+            className="visualizer-navigation__sorter"
+            type="button"
+            onClick={this.handleSort}
+          >Tri à bulle</button>
+        </div>
+      </nav>
       <div className="visualizer-container">
         {this.state.items.map((item, index) => {
           if(item !== undefined) {
