@@ -48,7 +48,6 @@ export default class Visualizer extends React.Component {
 
   handleSort (event) {
     let items = this.state.items
-    console.log(this.state.items)
 
     let sorter = new SelectionSort()
     sorter.execute(items)
