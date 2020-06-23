@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap');
+
+:root {
+
+  --blue: #0099ff;
+  --yellow: #ffd700;
+  --background: #f2f3f9;
+
+  --container-width: 900px;
+  --container-shadow: 0.25rem 0.25rem 1.75rem 0 rgba(146,125,250,0.16);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+
+  font-size: 1rem;
+  font-family: "IBM Plex Sans", sans-serif;
+
+  overflow-x: hidden;
+  background: var(--background);
+}
+
+.visualizer-header {
+  width: var(--container-width);
+  height: auto;
+
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.visualizer-header__favicon {
+
+}
+
+.visualizer-header__title {
+  text-align: center;
+  font-size: 3rem;
+  color: #000000;
+}
+
+.visualizer-navigation {
+  width: var(--container-width);
+  height: 100px;
+
+  display: flex;
+  flex-direction: row;
+
+  margin: 30px auto;
+  margin-bottom: 0;
+
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--container-shadow);
+}
+
+.visualizer-navigation .left,
+.visualizer-navigation .right {
+  flex: 0 0 50%;
+
+  line-height: 100px;
+  padding: 0 30px;
+}
+
+.visualizer-navigation .right { text-align: right; }
+
+.visualizer-navigation__random {
+  height: 60px;
+  width: 60px;
+
+  outline: none;
+  border: none;
+  cursor: pointer;
+  line-height: 30px;
+
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 60px;
+  background: var(--blue);
+  transition: transform .3s;
+}
+
+.visualizer-navigation__random:hover {
+  transform: scale(1.1);
+}
+
+.visualizer-navigation__count {
+  margin: 0 30px;
+
+  -webkit-appearance: slider-horizontal;
+  cursor: grab;
+  outline: none;
+}
+
+.visualizer-navigation__count::selection {
+  color: red;
+}
+
+.visualizer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  width: var(--container-width);
+  height: 300px;
+
+  margin: 0 auto;
+  padding: 20px;
+
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: var(--container-shadow);
+}
+
+.visualizer-item {
+  flex: 1 0 auto;
+
+  border-radius: 4px 4px 0 0;
+  background: var(--blue);
+}
+
+.visualizer-item.selected { background: var(--yellow); }
