@@ -33,7 +33,8 @@ export default class SelectionSort extends Algorithm {
 
       this.addStep({
         "swap": {
-          pointer, minimum_index
+          left: pointer, 
+          right: minimum_index
         }
       })
 

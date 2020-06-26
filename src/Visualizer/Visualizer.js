@@ -10,6 +10,7 @@ export default class Visualizer extends React.Component {
     super(props)
 
     this.state = {
+      executing: false,
       itemsCount: 100,
       items: []
     }
@@ -37,7 +38,7 @@ export default class Visualizer extends React.Component {
     this.setState({ items: this.generateItems(this.state.itemsCount) })
   }
 
-  handleRange (event) {
+  handleRange(event) {
     let value = event.currentTarget.value
 
     this.setState({
@@ -46,10 +47,23 @@ export default class Visualizer extends React.Component {
     })
   }
 
-  handleSort (event) {
+  handleSort (event, algorithm) {
     let items = this.state.items
 
-    let sorter = new SelectionSort()
+    let sorter = null
+    switch (algorithm) {
+      case "selection":
+        sorter = new SelectionSort()
+        break;
+      case "insertion":
+        sorter = new InsertionSort()
+        break; 
+      case "bubble":
+        sorter = new BubbleSort()
+        break;       
+      default:
+        throw new Error("Aucun des tris disponibles ne correpondent...")
+    }
     sorter.execute(items)
 
     let stepIndex = 0
@@ -63,9 +77,9 @@ export default class Visualizer extends React.Component {
           items[step.select].className = "visualizer-item selected"
         }
         else if (step.swap) {
-          let tmp = items[step.swap.pointer]
-          items[step.swap.pointer] = items[step.swap.minimum_index]
-          items[step.swap.minimum_index] = tmp
+          let tmp = items[step.swap.left]
+          items[step.swap.left] = items[step.swap.right]
+          items[step.swap.right] = tmp
         }
 
         this.setState({ items })
@@ -82,7 +96,7 @@ export default class Visualizer extends React.Component {
             className="visualizer-navigation__random"
             type="button"
             onClick={this.handleRandom}
-          ><i class="fas fa-random"></i></button>
+          ><i className="fas fa-random"></i></button>
           <input
             className="visualizer-navigation__count"
             type="range"
@@ -96,17 +110,17 @@ export default class Visualizer extends React.Component {
           <button
             className="visualizer-navigation__sorter"
             type="button"
-            onClick={this.handleSort}
+            onClick={(e) => this.handleSort(e, "selection")}
           >Tri par sélection</button>
           <button
             className="visualizer-navigation__sorter"
             type="button"
-            onClick={this.handleSort}
+            onClick={(e) => this.handleSort(e, "insertion")}
           >Tri par insertion</button>
           <button
             className="visualizer-navigation__sorter"
             type="button"
-            onClick={this.handleSort}
+            onClick={(e) => this.handleSort(e, "bubble")}
           >Tri à bulle</button>
         </div>
       </nav>
@@ -121,6 +135,7 @@ export default class Visualizer extends React.Component {
             key={index}
             />
           }
+          return null
         })}
       </div>
     </div>;
