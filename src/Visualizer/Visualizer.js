@@ -108,17 +108,17 @@ export default class Visualizer extends React.Component {
         </div>
         <div className="right">
           <button
-            className="visualizer-navigation__sorter"
+            className="visualizer-navigation__button"
             type="button"
             onClick={(e) => this.handleSort(e, "selection")}
           >Tri par sélection</button>
           {/* <button
-            className="visualizer-navigation__sorter"
+            className="visualizer-navigation__button"
             type="button"
             onClick={(e) => this.handleSort(e, "insertion")}
           >Tri par insertion</button> */}
           <button
-            className="visualizer-navigation__sorter"
+            className="visualizer-navigation__button"
             type="button"
             onClick={(e) => this.handleSort(e, "bubble")}
           >Tri à bulle</button>

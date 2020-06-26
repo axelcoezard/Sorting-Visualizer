@@ -73,7 +73,7 @@ html, body {
 }
 
 .visualizer-navigation__random:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .visualizer-navigation__count {
@@ -86,6 +86,26 @@ html, body {
 
 .visualizer-navigation__count::selection {
   color: red;
+}
+
+.visualizer-navigation__button {
+  margin-left: 15px;
+  padding: 0 16px;
+  
+  border: none;
+  outline: none;
+  cursor: pointer;
+  
+  color: #fff;
+  font-size: 1rem;
+  line-height: 30px;
+  border-radius: 8px;
+  background: var(--blue);
+  transition: transform .3s;
+}
+
+.visualizer-navigation__button:hover {
+  transform: scale(1.05);
 }
 
 .visualizer-container {
