@@ -14,8 +14,7 @@ class BubbleSort extends Algorithm {
       let left = 0
       let right = 1
       while (right < new_items.length - pointer) {
-        this.addStep({ "select": left })
-        this.addStep({ "select": right })
+        this.addStep({ "select": [left, right] })
         if (new_items[right].size < new_items[left].size) {
           let tmp = new_items[left]
           new_items[left] = new_items[right]

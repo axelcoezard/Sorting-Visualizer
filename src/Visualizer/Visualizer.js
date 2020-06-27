@@ -72,9 +72,17 @@ export default class Visualizer extends React.Component {
 
       setTimeout(function () {
         items.forEach(item => item.className = "visualizer-item")
-
-        if (step.select !== false && items[step.select] !== undefined) {
-          items[step.select].className = "visualizer-item selected"
+        if (step.select !== false && step.select !== undefined) {
+          let selects = []
+          if (Array.isArray(step.select)) {
+            selects = [...step.select]
+          } else {
+            selects.push(step.select)
+          }
+          selects.forEach(index => {
+            if (items[index] !== undefined)
+              items[index].className = "visualizer-item selected"
+          })
         }
         else if (step.swap) {
           let tmp = items[step.swap.left]
@@ -83,7 +91,7 @@ export default class Visualizer extends React.Component {
         }
 
         this.setState({ items })
-      }.bind(this), 5 * stepIndex)
+      }.bind(this), 15 * stepIndex)
       stepIndex += 1
     }
   }
